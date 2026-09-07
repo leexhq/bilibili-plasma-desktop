@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+*.spec
+
+# Local data & databases (Passive Archiving runtime data)
+data/archive.db*
+data/test_archive.db*
+data/recordings/
+data/offline_queue.json
+data/accounts.json
+
+# PyInstaller dist binaries (distributables belong to GitHub Releases)
+# dist/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE & OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

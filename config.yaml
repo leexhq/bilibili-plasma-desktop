@@ -1,0 +1,46 @@
+# Bilibili Plasma/Breeze Desktop Client Configuration
+version: "1.0.0"
+
+# UI & Interaction
+ui:
+  theme: "breeze-dark" # breeze-dark | breeze-light
+  font_family: "Noto Sans, Segoe UI, sans-serif"
+  code_font_family: "JetBrains Mono, Consolas, monospace"
+  accent_color: "#3daee9" # KDE Breeze Blue
+  enable_vim_mode: true
+  keyboard_hints: true
+  animation_duration_ms: 150
+
+# Passive Data Archiving (Zero Extra Network Requests)
+archiving:
+  enabled: true
+  db_path: "data/archive.db"
+  stream_recording:
+    enabled: true
+    dir_template: "data/recordings/{upid}_{bvid}"
+    filename_template: "{bvid}_{cid}_{title}_{timestamp}.flv"
+  metadata_archiving:
+    enabled: true
+    record_timeseries_interval_seconds: 60
+  comments_archiving:
+    enabled: true
+
+# Multi-Identity Defaults
+identity:
+  default_active_id: "default_user"
+  inherit_on_navigation: true
+  auto_follow_message_prompt: true
+
+# Offline & Disaster Recovery
+offline:
+  enable_offline_mode: true
+  queue_path: "data/offline_queue.json"
+  auto_sync_on_reconnect: true
+
+# Danmaku Engine
+danmaku:
+  engine: "bas_and_standard" # standard | advanced | bas_and_standard
+  opacity: 0.85
+  font_size: 24
+  density_limit: 60
+  speed_ratio: 1.0

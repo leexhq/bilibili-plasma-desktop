@@ -1,0 +1,51 @@
+{
+  "active_account_id": "acc_main",
+  "accounts": [
+    {
+      "id": "acc_main",
+      "name": "主身份 (ArchUser)",
+      "mid": 10001,
+      "avatar": "https://i0.hdslb.com/bfs/face/member/noface.jpg",
+      "sessdata": "mock_sessdata_archuser_10001",
+      "bili_jct": "mock_csrf_token_main",
+      "buvid3": "",
+      "level": 6,
+      "is_vip": true,
+      "tags": [
+        "主号",
+        "开发",
+        "KDE"
+      ]
+    },
+    {
+      "id": "acc_sub_dev",
+      "name": "备用身份 (PlasmaHacker)",
+      "mid": 20002,
+      "avatar": "https://i0.hdslb.com/bfs/face/member/noface.jpg",
+      "sessdata": "mock_sessdata_plasma_20002",
+      "bili_jct": "mock_csrf_token_sub",
+      "buvid3": "",
+      "level": 5,
+      "is_vip": false,
+      "tags": [
+        "小号",
+        "技术测试"
+      ]
+    },
+    {
+      "id": "acc_anon",
+      "name": "匿名追番身份 (BreezeWatcher)",
+      "mid": 30003,
+      "avatar": "https://i0.hdslb.com/bfs/face/member/noface.jpg",
+      "sessdata": "mock_sessdata_breeze_30003",
+      "bili_jct": "mock_csrf_token_anon",
+      "buvid3": "",
+      "level": 4,
+      "is_vip": false,
+      "tags": [
+        "动漫",
+        "观影"
+      ]
+    }
+  ]
+}
