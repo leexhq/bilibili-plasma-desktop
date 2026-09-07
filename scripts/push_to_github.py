@@ -9,6 +9,13 @@ from pathlib import Path
 from dulwich import porcelain
 from dulwich.repo import Repo
 
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 def ensure_repo_exists(token: str, repo_name: str, private: bool = False) -> bool:
     """Check if repository exists on GitHub; if not, create it via API."""
     import urllib.request
@@ -26,11 +33,11 @@ def ensure_repo_exists(token: str, repo_name: str, private: bool = False) -> boo
         req = urllib.request.Request(f"https://api.github.com/repos/leexhq/{repo_name}", headers=headers)
         with urllib.request.urlopen(req) as resp:
             if resp.status == 200:
-                print(f"✅ 远程仓库 leexhq/{repo_name} 已存在。")
+                print(f"[INFO] 远程仓库 leexhq/{repo_name} 已存在。")
                 return True
     except urllib.error.HTTPError as e:
         if e.code == 404:
-            print(f"ℹ️ 仓库 leexhq/{repo_name} 尚不存在，正在通过 GitHub API 自动创建...")
+            print(f"[INFO] 远程仓库 leexhq/{repo_name} 尚不存在，正在通过 GitHub API 自动创建...")
             create_data = json.dumps({
                 "name": repo_name,
                 "description": "Native KDE Breeze styled Bilibili desktop client with hardware-accelerated local proxy player, passive SQLite stream archive, and detachable PiP",
@@ -40,15 +47,15 @@ def ensure_repo_exists(token: str, repo_name: str, private: bool = False) -> boo
             try:
                 with urllib.request.urlopen(create_req) as create_resp:
                     if create_resp.status in (200, 201):
-                        print(f"🎉 远程仓库 leexhq/{repo_name} 自动创建成功！")
+                        print(f"[SUCCESS] 远程仓库 leexhq/{repo_name} 自动创建成功！")
                         return True
             except Exception as create_err:
-                print(f"⚠️ 自动创建仓库失败: {create_err}")
+                print(f"[ERROR] 自动创建仓库失败: {create_err}")
                 return False
         else:
-            print(f"⚠️ 检查仓库时遇到错误: {e}")
+            print(f"[WARNING] 检查仓库时遇到 HTTP 状态: {e}")
     except Exception as ex:
-        print(f"⚠️ 检查/创建仓库时发生异常: {ex}")
+        print(f"[WARNING] 检查/创建仓库时发生异常: {ex}")
     return False
 
 def push_to_github():
@@ -94,7 +101,7 @@ def push_to_github():
         parts = display_url.split("@")
         display_url = "https://" + parts[-1]
 
-    print(f"\n🚀 正在推送分支 '{args.branch}' 至: {display_url} ...")
+    print(f"\n[INFO] 正在推送分支 '{args.branch}' 至: {display_url} ...")
 
     try:
         config = repo.get_config()
@@ -103,11 +110,11 @@ def push_to_github():
 
         porcelain.push(repo, target_url, f"refs/heads/{args.branch}")
         print("\n" + "=" * 60)
-        print(f"🎉 成功发布到 GitHub！")
-        print(f"👉 项目主页: {display_url.rstrip('.git')}")
+        print(f"[SUCCESS] 成功发布到 GitHub！")
+        print(f"[URL] 项目主页: {display_url.rstrip('.git')}")
         print("=" * 60)
     except Exception as e:
-        print(f"\n❌ 推送失败: {e}")
+        print(f"\n[ERROR] 推送失败: {e}")
         print("\n提示: 如果出现认证错误，请确认 Token 具备 'repo' 读写权限。")
         sys.exit(1)
 
