@@ -2,6 +2,9 @@
 
 [English Documentation](README_EN.md) | [中文说明](README.md)
 
+> [!IMPORTANT]
+> **AI-assisted development notice:** Google Gemini assisted the design and implementation of this project. The repository retains the [original prompt](gemini-code-1788748840030.md). The maintainer reviewed the resulting work and remains responsible for the published content.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.13](https://img.shields.io/badge/Python-3.13-brightgreen.svg)](https://www.python.org/)
 [![Qt6 / PySide6](https://img.shields.io/badge/Qt-6.11-blueviolet.svg)](https://www.qt.io/)
