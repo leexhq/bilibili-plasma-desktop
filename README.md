@@ -2,6 +2,9 @@
 
 [English Documentation](README_EN.md) | [中文说明](README.md)
 
+> [!IMPORTANT]
+> **AI 辅助开发声明：** 本项目的设计与实现使用了 Google Gemini 辅助；仓库保留了[原始提示词](gemini-code-1788748840030.md)。维护者已审阅相关产出，并对发布内容负责。
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.13](https://img.shields.io/badge/Python-3.13-brightgreen.svg)](https://www.python.org/)
 [![Qt6 / PySide6](https://img.shields.io/badge/Qt-6.11-blueviolet.svg)](https://www.qt.io/)
